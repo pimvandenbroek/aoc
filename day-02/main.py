@@ -1,5 +1,4 @@
 import numpy
-from functools import reduce
 
 max = {
     'red': 12,
