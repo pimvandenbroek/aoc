@@ -1,7 +1,7 @@
 import time
 import os
 
-lines = open("input.txt").read().splitlines()
+data = open("input.txt").read().splitlines()
 
 ### Function to print timestamped messages
 startingtime = time.time()
