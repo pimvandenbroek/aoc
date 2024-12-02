@@ -36,7 +36,8 @@ def part_two():
     answer += int(num) * occurrences
 
   tsprint(f'Second answer: {str(answer)}')
-###
+
+### Running the solutions
 tsprint(f'Starting {os.path.basename(os.getcwd())}')
 part_one()
 part_two()
