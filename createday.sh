@@ -20,6 +20,10 @@ mkdir -p "$dir_path"
 
 # Copy and rename the default.py file
 if [[ -f "default.py" ]]; then
+    if [[ -f "$dir_path/main.py" ]]; then
+        echo "main.py already exists in the directory $dir_path."
+        exit 1
+    fi
     cp "default.py" "$dir_path/main.py"
     touch "$dir_path/test_input.txt"
 else
