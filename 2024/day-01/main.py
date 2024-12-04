@@ -1,13 +1,7 @@
-import time
 import os
+from helpers import tsprint
 
 lines = open("input.txt").read().splitlines()
-
-### Function to print timestamped messages
-startingtime = time.time()
-def tsprint(message):
-    timestamp = time.time()-startingtime
-    print(f"[{timestamp:.4f}] {message}")
 
 ### Parsing data
 leftlist = []

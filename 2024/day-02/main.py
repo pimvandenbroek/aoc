@@ -1,14 +1,9 @@
-import time
 import os
+from helpers import tsprint
 
 data = open("input.txt").read().splitlines()
 data = [[int(n) for n in line.split(' ')] for line in data]
 
-### Function to print timestamped messages
-startingtime = time.time()
-def tsprint(message):
-    timestamp = time.time()-startingtime
-    print(f"[{timestamp:.4f}] {message}")
 
 def is_safe(levels):
   increase = all(levels[i+1] > levels[i] for i in range(len(levels) -1))

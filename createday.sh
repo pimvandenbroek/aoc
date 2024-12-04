@@ -25,6 +25,7 @@ if [[ -f "default.py" ]]; then
         exit 1
     fi
     cp "default.py" "$dir_path/main.py"
+    cp "helpers.py" "$dir_path/helpers.py"
     touch "$dir_path/test_input.txt"
 else
     echo "default.py not found in the current directory."
