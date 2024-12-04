@@ -28,8 +28,8 @@ def part_two():
       if charnum == 0 or charnum == len(data[0]) - 1:
         continue
       if data[rownum][charnum] != 'A': continue
-      dingskes = data[rownum-1][charnum-1] + data[rownum-1][charnum+1] + data[rownum+1][charnum+1] + data[rownum+1][charnum-1]
-      if dingskes in ["MMSS", "SSMM", "MSSM", "SMMS"]:
+      xcoords = data[rownum-1][charnum-1] + data[rownum-1][charnum+1] + data[rownum+1][charnum+1] + data[rownum+1][charnum-1]
+      if xcoords in ["MMSS", "SSMM", "MSSM", "SMMS"]:
         answer += 1
 
   tsprint(f'Second answer: {str(answer)}')
