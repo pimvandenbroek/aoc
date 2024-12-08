@@ -22,9 +22,9 @@ mkdir -p "$dir_path"
 if [[ -f "default.py" ]]; then
     if [[ -f "$dir_path/main.py" ]]; then
         echo "main.py already exists in the directory $dir_path."
-        exit 1
+    else
+        cp "default.py" "$dir_path/main.py"
     fi
-    cp "default.py" "$dir_path/main.py"
     cp "helpers.py" "$dir_path/helpers.py"
     touch "$dir_path/test_input.txt"
 else

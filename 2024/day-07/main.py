@@ -11,14 +11,26 @@ def is_calc_possible(testvalue, numbers):
     return True
   return False
 
+def is_calc_possible_concat(testvalue, numbers):
+  if len(numbers) == 1: return testvalue == numbers[0]
+  if testvalue % numbers[-1] == 0 and is_calc_possible_concat(testvalue // numbers[-1], numbers[:-1]):
+    return True
+  if testvalue > numbers[-1] and is_calc_possible_concat(testvalue - numbers[-1], numbers[:-1]):
+    return True
+
+  testvaluestring = str(testvalue)
+  numbersstring = str(numbers[-1])
+  if testvaluestring.endswith(numbersstring) and len(testvaluestring) > len(numbersstring) and is_calc_possible_concat(int(testvaluestring[:-len(numbersstring)]), numbers[:-1]): return True
+  return False
+
 ### Solution for part one
 def part_one():
   answer = 0
   for x in data:
-    testvalue, numbers = x.split(':')
+    testvalue, numbers = x.split(': ')
     testvalue = int(testvalue)
     numbers = [int(x) for x in numbers.split()]
-    
+
     if is_calc_possible(testvalue, numbers):
       answer += testvalue
 
@@ -28,7 +40,13 @@ def part_one():
 ### Solution for part two
 def part_two():
   answer = 0
+  for x in data:
+    testvalue, numbers = x.split(': ')
+    testvalue = int(testvalue)
+    numbers = [int(x) for x in numbers.split()]
 
+    if is_calc_possible_concat(testvalue, numbers):
+      answer += testvalue
   tsprint(f'Second answer: {str(answer)}')
 
 ### Running the solutions
