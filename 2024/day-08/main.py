@@ -9,15 +9,14 @@ antinodes = set()
 ### Solution for part one
 def part_one():
   answer = 0
-
   antennas = {}
+
   for rownum, row in enumerate(grid):
     for charnum, char in enumerate(row):
       if char != '.':
-        if char not in antennas:
-          antennas[char] = []
+        if char not in antennas: antennas[char] = []
         antennas[char].append((rownum, charnum))
-  #print(antennas)
+
   for antennalist in antennas.values():
     for row in range(len(antennalist)):
       for col in range(row+1, len(antennalist)):
@@ -27,13 +26,39 @@ def part_one():
           antinodes.add((2 * row_1-row_2, 2 * col_1-col_2))
         if (len(grid) > 2 * row_2-row_1 >= 0) and (0 <= 2 * col_2-col_1 < len(grid[0])):
           antinodes.add((2 * row_2-row_1, 2 * col_2-col_1))
+
   answer = len(antinodes)
+
   tsprint(f'First answer: {str(answer)}')
 
 
 ### Solution for part two
 def part_two():
   answer = 0
+  antennas = {}
+
+  for rownum, row in enumerate(grid):
+    for charnum, char in enumerate(row):
+      if char != '.':
+        if char not in antennas: antennas[char] = []
+        antennas[char].append((rownum, charnum))
+
+  for antennalist in antennas.values():
+    for row in range(len(antennalist)):
+      for col in range(len(antennalist)):
+        if row==col: continue
+        row_1, col_1 = antennalist[row]
+        row_2, col_2 = antennalist[col]
+        dir_row = row_2-row_1
+        dir_col = col_2-col_1
+        temprow = row_1
+        tempcol = col_1
+        while 0 <= temprow < len(grid) and 0 <= tempcol < len(grid[0]):
+          antinodes.add((temprow, tempcol))
+          temprow += dir_row
+          tempcol += dir_col
+
+  answer = len(antinodes)
 
   tsprint(f'Second answer: {str(answer)}')
 
