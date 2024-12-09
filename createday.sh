@@ -1,7 +1,15 @@
 #!/opt/homebrew/bin/bash
 
-# Prompt the user for a day number
-read -p "Enter the day number (1-31): " daynumber
+if [ -z "$1" ]; then
+    daynumber=$(date +%d)
+    year=$(date +%Y)
+else
+    daynumber=$1
+    year=$(date +%Y)
+fi
+
+# Remove any leading zeros from the day number
+daynumber=$((10#$daynumber))
 
 # Validate the input
 if [[ ! $daynumber =~ ^[0-9]+$ ]] || (( daynumber < 1 || daynumber > 31 )); then
