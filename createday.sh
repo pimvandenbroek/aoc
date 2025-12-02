@@ -1,4 +1,4 @@
-#!/opt/homebrew/bin/bash
+#!/bin/zsh
 
 if [ -z "$1" ]; then
     daynumber=$(date +%d)
@@ -21,7 +21,7 @@ fi
 daynumber_padded=$(printf "%02d" $daynumber)
 
 # Define the directory path
-dir_path="2024/day-$daynumber_padded"
+dir_path="$year/day-$daynumber_padded"
 
 # Create the directory
 mkdir -p "$dir_path"
@@ -47,7 +47,7 @@ if [[ -z "$AOC_SESSION" ]]; then
 fi
 
 # Create the input.txt file by downloading it using curl with the session cookie
-input_url="https://adventofcode.com/2024/day/$daynumber/input"
+input_url="https://adventofcode.com/2025/day/$daynumber/input"
 curl -s -o "$dir_path/input.txt" --cookie "session=$AOC_SESSION" "$input_url"
 
 # Check if the curl command succeeded
